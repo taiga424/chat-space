@@ -40,14 +40,15 @@ $fontWeight: bold;
     background-color: #2f3e51;
     padding: 20px 20px 0;
     .group {
-      color: $color;
       font-weight: $fontWeight;
       &__groupName {
         font-size: 15px;
+        color: $color;
         margin-bottom: 5px;
       }
       &__groupMessage {
         font-size: 11px;
+        color: $color;
         margin-bottom: 40px;
       }
     }
