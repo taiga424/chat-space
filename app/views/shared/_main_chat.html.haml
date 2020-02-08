@@ -2,36 +2,23 @@
   .chatHeader
     .chatHeader__group
       .chatHeader__group__name
-        test
+        = @group.name
       %ul.chatHeader__group__members
         Member：
         %li.chatHeader__group__members__list
-          masa
+          - @group.group_users.each do |group_user|
+            = group_user.user.name
     .chatHeader__editBtn
-      = link_to "#" do
+      = link_to edit_group_path(@group.id) do
         Edit
   .chatMessage
-    .chatMessage__messageBox
-      .chatMessage__messageBox__info
-        .chatMessage__messageBox__info__user
-          masa
-        .chatMessage__messageBox__info__datetime
-          2019/11/20(Wed) 17:43:01
-      .chatMessage__messageBox__text
-        おはよう！
-    .chatMessage__messageBox
-      .chatMessage__messageBox__info
-        .chatMessage__messageBox__info__user
-          masa
-        .chatMessage__messageBox__info__datetime
-          2019/11/20(Wed) 17:43:55
-      .chatMessage__messageBox__text
-        今日は夜から雨
+    = render @messages
   .chatForm
-    %form.chatForm__newMessage
-      .chatForm__newMessage__inputBox
-        %input{type: "text", class: "chatForm__newMessage__inputBox__text" , placeholder: "type a message"}
-        %label{class: "chatForm__newMessage__inputBox__image"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "chatForm__newMessage__inputBox__image__file"}
-      %input{type: "submit",name: "commit", value: "Send", class: "chatForm__newMessage__btn"}
+    = form_for [@group, @message] do |f|
+      .chatForm__inputBox
+        = f.text_field :content, class: 'chatForm__inputBox__text', placeholder: 'type a message'
+        .chatForm__mask
+          = f.label :image, class: 'chatForm__mask__image' do
+            = icon('fas', 'image')
+            = f.file_field :image, class: "chatForm__mask__image__file"
+        = f.submit 'Send', class: "btn"
