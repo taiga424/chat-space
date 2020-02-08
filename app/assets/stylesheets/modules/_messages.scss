@@ -119,20 +119,18 @@ $fontWeight: bold;
     height: 90px;
     background-color: #dddddd;
     padding: 20px 40px;
-    &__newMessage {
+    &__inputBox {
+      width: 100%;
       display: flex;
-      justify-content: space-between;
-      &__inputBox {
+      &__text {
+        height: 50px;
         width: 100%;
+        padding: 0 40px 0 10px;
+        color: $textColor;
+        border-style: none;
+      }
+      .chatForm__mask {
         position: relative;
-        display: flex;
-        &__text {
-          height: 50px;
-          width: 100%;
-          padding: 0 40px 0 10px;
-          color: $textColor;
-          border-style: none;
-        }
         &__image {
           position: absolute;
           top: 10px;
@@ -143,13 +141,13 @@ $fontWeight: bold;
           }
         }
       }
-      &__btn {
-        width: 100px;
-        margin-left: 15px;
-        padding: 0 30px;
-        background-color: #38aef0;
-        color: $color;
-      }
+    }
+    .btn {
+      width: 100px;
+      margin-left: 15px;
+      padding: 0 30px;
+      background-color: #38aef0;
+      color: $color;
     }
   }
 }
